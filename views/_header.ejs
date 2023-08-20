@@ -1,6 +1,21 @@
 <html>
   <head> </head>
   <body>
-    <p>My header</p>
+    <div id="header-div-container">
+      <div><p>codial</p></div>
+      <div id="header-link-container">
+        <% if(locals.user){%>
+        <div>
+          <a href="/user/profile"><%=user.name%></a>
+          <a href="/user/signout">Sign Out</a>
+        </div>
+        <%} else{%>
+        <div>
+          <a href="/user/signin">Sign In</a>
+          <a href="/user/signup">Sign Up</a>
+        </div>
+        <%}%>
+      </div>
+    </div>
   </body>
 </html>

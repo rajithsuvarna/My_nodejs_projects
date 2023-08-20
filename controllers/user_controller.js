@@ -4,6 +4,9 @@ module.exports.profile = function (req, res) {
 };
 
 module.exports.signUp = function (req, res) {
+  if (req.isAuthenticated()) {
+    return res.redirect("/user/profile");
+  }
   return res.render("user_signUp", { title: "Codial:SignUP" });
 };
 
@@ -43,4 +46,16 @@ module.exports.Create = function (req, res) {
       }
     });
 };
-module.exports.createSession = function (req, res) {};
+module.exports.createSession = function (req, res) {
+  return res.redirect("/");
+};
+
+module.exports.destroySession = function (req, res) {
+  req.logout(function (err) {
+    if (err) {
+      console.log("Error:while signout ");
+      return;
+    }
+    return res.redirect("/");
+  });
+};
