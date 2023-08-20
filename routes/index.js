@@ -6,5 +6,6 @@ router.use(express.urlencoded());
 router.get("/", homeController.home);
 router.use("/user", require("./user"));
 router.use("/posts", require("./posts"));
+router.use("/comments", require("./comment"));
 
 module.exports = router;
