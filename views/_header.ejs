@@ -6,7 +6,7 @@
       <div id="header-link-container">
         <% if(locals.user){%>
         <div>
-          <a href="/user/profile"><%=user.name%></a>
+          <a href="/user/profile/<%=locals.user.id%>"><%=user.name%></a>
           <a href="/user/signout">Sign Out</a>
         </div>
         <%} else{%>

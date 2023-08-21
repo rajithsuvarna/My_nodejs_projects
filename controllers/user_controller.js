@@ -7,6 +7,15 @@ module.exports.profile = function (req, res) {
     });
   });
 };
+module.exports.update = function (req, res) {
+  if (req.params.id == req.user.id) {
+    user.findByIdAndUpdate(req.params.id, req.body).then(() => {
+      return res.redirect("back");
+    });
+  } else {
+    return res.status(404).send("unauthorized");
+  }
+};
 
 module.exports.signUp = function (req, res) {
   if (req.isAuthenticated()) {

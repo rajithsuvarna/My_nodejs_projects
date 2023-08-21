@@ -8,6 +8,7 @@ router.get(
   passport.checkAuthentication,
   userController.profile
 );
+router.post("/update/:id", passport.checkAuthentication, userController.update);
 
 router.get("/signin", userController.signIn);
 router.get("/signup", userController.signUp);
