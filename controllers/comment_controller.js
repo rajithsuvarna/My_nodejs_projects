@@ -16,3 +16,32 @@ module.exports.create = function (req, res) {
     });
   });
 };
+
+module.exports.destroy = function (req, res) {
+  Comment.findById(req.params.id)
+    .then((comment) => {
+      //todo
+      let mypost = Post.findById(comment.post);
+      if (comment.user == req.user.id || mypost.user == req.user.id) {
+        let postId = Comment.post;
+        comment.deleteOne();
+
+        Post.findByIdAndUpdate(postId, {
+          $pull: { comments: req.params.id },
+        })
+          .then((post) => {
+            return res.redirect("back");
+          })
+          .catch((err) => {
+            console.log(err);
+            return;
+          });
+      } else {
+        return res.redirect("back");
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+      return;
+    });
+};
