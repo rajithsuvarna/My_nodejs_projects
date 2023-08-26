@@ -15,6 +15,7 @@ const app = express();
 app.use(express.urlencoded());
 app.use(cookieParse());
 app.use(express.static("./assets"));
+app.use("/uploads", express.static(__dirname + "/uploads"));
 const expressLayouts = require("express-ejs-layouts");
 const cookieParser = require("cookie-parser");
 app.use(expressLayouts);
