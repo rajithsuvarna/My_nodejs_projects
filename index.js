@@ -10,6 +10,7 @@ const MongoStore = require("connect-mongo");
 const saasMiddleware = require("node-sass-middleware");
 const flash = require("connect-flash");
 const customMware = require("./config/middleware");
+const passportJWT = require("./config/passport-jwt-strategy");
 
 const app = express();
 app.use(express.urlencoded());
