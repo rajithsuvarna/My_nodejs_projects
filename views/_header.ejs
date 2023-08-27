@@ -6,13 +6,13 @@
       <div id="header-link-container">
         <% if(locals.user){%>
         <div>
-          <a href="/user/profile/<%=locals.user.id%>"><%=user.name%></a>
-          <a href="/user/signout">Sign Out</a>
+          <a href="/users/profile/<%=locals.user.id%>"><%=user.name%></a>
+          <a href="/users/signout">Sign Out</a>
         </div>
         <%} else{%>
         <div>
-          <a href="/user/signin">Sign In</a>
-          <a href="/user/signup">Sign Up</a>
+          <a href="/users/signin">Sign In</a>
+          <a href="/users/signup">Sign Up</a>
         </div>
         <%}%>
       </div>

@@ -51,7 +51,7 @@ module.exports.update = async function (req, res) {
 
 module.exports.signUp = function (req, res) {
   if (req.isAuthenticated()) {
-    return res.redirect("/user/profile");
+    return res.redirect("/users/profile");
   }
   return res.render("user_signUp", { title: "Codial:SignUP" });
 };
@@ -77,7 +77,7 @@ module.exports.Create = function (req, res) {
           })
           .then(() => {
             req.flash("success", "Signup successful");
-            return res.redirect("/user/signin");
+            return res.redirect("/users/signin");
           })
           .catch((err) => {
             req.flash("error", err);
