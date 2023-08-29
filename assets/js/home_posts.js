@@ -16,6 +16,11 @@
           $("#posts-list-container>ul").prepend(newPost);
           deletePost($(" .delete-post-button", newPost));
 
+          new PostComments(data.data.post._id);
+          console.log(data.data.post._id);
+          // CHANGE :: enable the functionality of the toggle like button on the new post
+          new ToggleLike($(" .toggle-like-button", newPost));
+
           new Noty({
             theme: "relax",
             text: "Post published!",
@@ -23,7 +28,6 @@
             layout: "topRight",
             timeout: 1500,
           }).show();
-          new PostComments(data.data.post._id);
         },
         error: function (error) {
           console.log(error.responseText);
@@ -41,6 +45,10 @@
           ${post.content}
           <br />
           ${post.user.name}
+          <br>
+          <small>
+            <a class="toggle-like-button" data-likes="0" href="/likes/toggle/?id=${post._id}&type=Post">0 Likes</a>
+          </small>
         </p>
         <div class="post-comments">
           

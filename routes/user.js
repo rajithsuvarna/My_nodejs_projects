@@ -16,7 +16,7 @@ router.get("/signup", userController.signUp);
 router.post("/create", userController.Create);
 router.post(
   "/create-session",
-  passport.authenticate("local", { failureRedirect: "/user/signin" }),
+  passport.authenticate("local", { failureRedirect: "/users/signin" }),
   userController.createSession
 );
 
@@ -29,7 +29,7 @@ router.get(
 
 router.get(
   "/auth/google/callback",
-  passport.authenticate("google", { failureRedirect: "/user/signin" }),
+  passport.authenticate("google", { failureRedirect: "/users/signin" }),
   userController.createSession
 );
 
