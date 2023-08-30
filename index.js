@@ -57,6 +57,11 @@ app.use(
   })
 );
 
+const chatServer = require("http").Server(app);
+const chatSockets = require("./config/chat_socket").chatSockets(chatServer);
+chatServer.listen(5000);
+console.log("chat server is listening on port 5000");
+
 app.use(passport.initialize());
 app.use(passport.session());
 

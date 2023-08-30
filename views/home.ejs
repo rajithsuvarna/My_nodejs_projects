@@ -24,6 +24,7 @@
     </div>
   </section>
   <section id="user-friends">
+    <% if(locals.user){%>
     <small>
       <h4>Friends</h4>
       <% for(u of locals.user.friendships){%> <%for(v of all_user){%>
@@ -33,6 +34,7 @@
       </p>
       <%}%> <%}%> <%}%>
     </small>
+    <%}%>
     <small>
       <h4>Users</h4>
       <% for(u of all_user){%>
@@ -42,7 +44,7 @@
       <%}%>
     </small>
   </section>
-  <%- include('_chatbox') -%>
+  <%- include('_chatbox') %>
 </div>
 <script src="/js/home_post_comment.js"></script>
 <script src="/js/home_posts.js"></script>
@@ -54,3 +56,10 @@
     let toggleLike = new ToggleLike(self);
   });
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.2/socket.io.js"></script>
+<script src="/js/chat_engine.js"></script>
+<% if (locals.user){ %>
+<script>
+  new ChatEngine("user-chat-box", "<%= locals.user.email %>");
+</script>
+<% } %>
