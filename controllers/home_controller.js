@@ -1,5 +1,6 @@
 const Post = require("../models/post");
 const User = require("../models/user");
+const Friends = require("../models/friendship");
 module.exports.home = async function (req, res) {
   try {
     let posts = await Post.find({})

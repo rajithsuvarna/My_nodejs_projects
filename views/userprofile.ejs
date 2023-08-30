@@ -13,8 +13,12 @@
   <%}else{%>
   <p><%=profile_user.name%></p>
   <p><%=profile_user.email%></p>
-  <form action="/friend/addfriend/<%=profile_user.id%>" method="POST">
-    <input type="submit" value="Friend">
-  </form>
+  <p><%=profile_user.id%></p>
+  <small>
+    <a href="/friend/addfriend/<%=profile_user.id%>">Friend</a>
+  </small>
+  <small>
+    <a href="/friend/unfriend/<%=profile_user.id%>">Unfriend</a>
+  </small>
   <%}%>
 </form>
